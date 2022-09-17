@@ -17,7 +17,7 @@ class ScopeInlineFormset(BaseInlineFormSet):
 
         if count == 0:
             raise ValidationError('Выберете один основной раздел!')
-        return super().clean()  # вызываем базовый код переопределяемого метода
+        return super().clean()
 
 
 class ScopeInline(admin.TabularInline):
