@@ -9,14 +9,9 @@ class ScopeInlineFormset(BaseInlineFormSet):
     def clean(self):
         count = 0
         for form in self.forms:
-            # В form.cleaned_data будет словарь с данными
-            # каждой отдельной формы, которые вы можете проверить
-            if form.cleaned_data['is_main'] == True:
+            if form.cleaned_data['is_main']:
                 count += 1
                 form.cleaned_data
-            # вызовом исключения ValidationError можно указать админке о наличие ошибки
-            # таким образом объект не будет сохранен,
-            # а пользователю выведется соответствующее сообщение об ошибке
         if count > 1:
             raise ValidationError('Основной раздел должен быть один!')
 
